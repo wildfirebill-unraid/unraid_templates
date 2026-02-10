@@ -553,8 +553,8 @@
             },
             {
                 "file_path": "docker/.env.example",
-                "commit_hash": "9f55328f88b8cb1db38e327fe52cbdc8de1de775",
-                "commit_message": "added support for SPARKY_FITNESS_EXTRA_TRUSTED_ORIGINS\n"
+                "commit_hash": "45bb5c4f0e8be3e801c9287bb240944439b7f79e",
+                "commit_message": "Updated withing to save json as mockup files. renamed few other variables used by developers\n"
             }
         ]
     },
@@ -1066,13 +1066,13 @@
         "files_to_check": [
             {
                 "file_path": "docker-compose.yml",
-                "commit_hash": "f3dae501e52a6adad9ae704bf76c59e722d52fe6",
-                "commit_message": "feat: add automatic instance failover for SquidWTF Tidal backend\n"
+                "commit_hash": "34e1ad6ab70bd01b2636e73d96355e592b19b292",
+                "commit_message": "fix: update .env and docker-compose with complete SquidWTF quality options\n"
             },
             {
                 "file_path": ".env.example",
-                "commit_hash": "f3dae501e52a6adad9ae704bf76c59e722d52fe6",
-                "commit_message": "feat: add automatic instance failover for SquidWTF Tidal backend\n"
+                "commit_hash": "34e1ad6ab70bd01b2636e73d96355e592b19b292",
+                "commit_message": "fix: update .env and docker-compose with complete SquidWTF quality options\n"
             }
         ]
     },
