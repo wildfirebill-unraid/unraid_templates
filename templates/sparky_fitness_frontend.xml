@@ -1,38 +1,30 @@
 <?xml version="1.0"?>
-<Container version="2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://raw.githubusercontent.com/nwithan8/unraid_templates/main/templates/template_schema.xsd template_schema.xsd">
-    <Name>SparkyFitness - Frontend</Name>
-    <Repository>codewithcj/sparkyfitness:latest</Repository>
-    <Registry>https://hub.docker.com/r/codewithcj/sparkyfitness</Registry>
-    <Branch>
-        <Tag>latest</Tag>
-        <TagDescription>Latest stable release</TagDescription>
-    </Branch>
-    <Network>sparkyfitness</Network>
-    <WebUI>http://[IP]:[PORT:80]/</WebUI>
-    <Privileged>false</Privileged>
-    <Support>https://codewithcj.github.io/SparkyFitness</Support>
-    <Project>https://github.com/CodeWithCJ/SparkyFitness</Project>
-    <Overview>
-        SparkyFitness is a comprehensive fitness tracking and management application designed to help users monitor their nutrition, exercise, and body measurements. It provides tools for daily progress tracking, goal setting, and insightful reports to support a healthy lifestyle.  &#xD;
-        [br]
-        This is the frontend container.
-    </Overview>
-    <Beta>False</Beta>
-    <Category>Productivity: Tools: Other: Status:Stable</Category>
-    <ExtraSearchTerms>health tracking data fitness nutrition exercise workout diet calories weight body measurements myfitnesspal pal</ExtraSearchTerms>
-    <Icon>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/sparky-fitness-icon.png</Icon>
-    <TemplateURL>https://raw.githubusercontent.com/nwithan8/unraid_templates/main/templates/sparky_fitness_frontend.xml</TemplateURL>
-    <Screenshot>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/sparkyfitness_demo_1.png</Screenshot>
-    <Maintainer>
-        <WebPage>https://github.com/nwithan8</WebPage>
-    </Maintainer>
-    <Changes>
-        ### 2025-08-29
-
-        Initial release
-    </Changes>
-    <Requires>
-        Requires separate SparkyFitness - Backend and Postgres containers.
-    </Requires>
-    <Config Name="Web UI Port" Target="80" Default="3004" Mode="tcp" Description="Container Port: 80" Type="Port" Display="always-hide" Required="true" Mask="false">3004</Config>
+<Container version="2">
+  <Name>SparkyFitness---Frontend</Name>
+  <Repository>codewithcj/sparkyfitness:latest</Repository>
+  <Registry>https://hub.docker.com/r/codewithcj/sparkyfitness</Registry>
+  <Network>wildfire</Network>
+  <MyIP>172.18.255.125</MyIP>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://codewithcj.github.io/SparkyFitness</Support>
+  <Project>https://github.com/CodeWithCJ/SparkyFitness</Project>
+  <ReadMe/>
+  <Overview>SparkyFitness is a comprehensive fitness tracking and management application designed to help users monitor their nutrition, exercise, and body measurements. It provides tools for daily progress tracking, goal setting, and insightful reports to support a healthy lifestyle.  &#13;
+        &#13;
+&#13;
+        This is the frontend container.</Overview>
+  <Category>Productivity: Tools:Utilities Other:</Category>
+  <WebUI>http://[IP]:[PORT:59825]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/nwithan8/unraid_templates/main/templates/sparky_fitness_frontend.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/sparky-fitness-icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1772729717</DateInstalled>
+  <DonateText>If you like an app, please donate to the respective developers; I'm just writing XML files over here. But if you have some change to spare afterwards, maybe chuck me a buck?</DonateText>
+  <DonateLink>https://www.buymeacoffee.com/nwithan8</DonateLink>
+  <Requires>br&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;Requires separate SparkyFitness - Backend and Postgres containers.br&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;</Requires>
+  <Config Name="Web UI Port" Target="80" Default="3004" Mode="tcp" Description="" Type="Port" Display="always-hide" Required="true" Mask="false">59825</Config>
+  <TailscaleStateDir/>
 </Container>

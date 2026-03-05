@@ -1,45 +1,33 @@
 <?xml version="1.0"?>
-<Container version="2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://raw.githubusercontent.com/nwithan8/unraid_templates/main/templates/template_schema.xsd template_schema.xsd">
-    <Name>SparkyFitness - Garmin</Name>
-    <Repository>codewithcj/sparkyfitness_garmin:latest</Repository>
-    <Registry>https://hub.docker.com/r/codewithcj/sparkyfitness_garmin</Registry>
-    <Branch>
-        <Tag>latest</Tag>
-        <TagDescription>Latest stable release</TagDescription>
-    </Branch>
-    <Network>sparkyfitness</Network>
-    <WebUI>http://[IP]:[PORT:8000]/</WebUI>
-    <Privileged>false</Privileged>
-    <Support>https://codewithcj.github.io/SparkyFitness</Support>
-    <Project>https://github.com/CodeWithCJ/SparkyFitness</Project>
-    <Overview>
-        SparkyFitness is a comprehensive fitness tracking and management application designed to help users monitor their nutrition, exercise, and body measurements. It provides tools for daily progress tracking, goal setting, and insightful reports to support a healthy lifestyle.  &#xD;
-        [br]
-        This is the Garmin integration microservice container.
-    </Overview>
-    <Beta>False</Beta>
-    <Category>Productivity: Tools: Other: Status:Stable</Category>
-    <ExtraSearchTerms>health tracking data fitness nutrition exercise workout diet calories weight body measurements myfitnesspal pal garmin</ExtraSearchTerms>
-    <Icon>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/sparky-fitness-icon.png</Icon>
-    <TemplateURL>https://raw.githubusercontent.com/nwithan8/unraid_templates/main/templates/sparky_fitness_garmin.xml</TemplateURL>
-    <Screenshot>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/sparkyfitness_demo_1.png</Screenshot>
-    <Maintainer>
-        <WebPage>https://github.com/nwithan8</WebPage>
-    </Maintainer>
-    <Changes>
-        ### 2025-10-07
-
-        Add China region support for Garmin microservice
-
-        ### 2025-10-01
-
-        Initial release
-    </Changes>
-    <Requires>
-        Requires SparkyFitness containers.
-    </Requires>
-    <Config Name="API Port" Target="8000" Default="8000" Mode="tcp" Description="Container Port: 8000" Type="Port" Display="always-hide" Required="true" Mask="false">8000</Config>
-    <Config Name="Garmin Microservice URL" Target="GARMIN_MICROSERVICE_URL" Default="http://IP_ADDRESS:8000" Description="URL of the Garmin microservice (e.g., http://IP_ADDRESS:8000)" Type="Variable" Display="always" Required="false" Mask="false">http://IP_ADDRESS:8000</Config>
-    <Config Name="Garmin Microservice Port" Target="GARMIN_SERVICE_PORT" Default="8000" Description="Port number for the Garmin microservice. Must match port defined in GARMIN_MICROSERVICE_URL" Type="Variable" Display="always" Required="false" Mask="false">8000</Config>
-    <Config Name="China Region" Target="GARMIN_SERVICE_IS_CN" Default="false|true" Description="Set to true if you are in China to use the China Garmin servers" Type="Variable" Display="always-hide" Required="true" Mask="false"/>
+<Container version="2">
+  <Name>SparkyFitness---Garmin</Name>
+  <Repository>codewithcj/sparkyfitness_garmin:latest</Repository>
+  <Registry>https://hub.docker.com/r/codewithcj/sparkyfitness_garmin</Registry>
+  <Network>wildfire</Network>
+  <MyIP>172.18.255.124</MyIP>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://codewithcj.github.io/SparkyFitness</Support>
+  <Project>https://github.com/CodeWithCJ/SparkyFitness</Project>
+  <ReadMe/>
+  <Overview>SparkyFitness is a comprehensive fitness tracking and management application designed to help users monitor their nutrition, exercise, and body measurements. It provides tools for daily progress tracking, goal setting, and insightful reports to support a healthy lifestyle.  &#13;
+        &#13;
+&#13;
+        This is the Garmin integration microservice container.</Overview>
+  <Category>Productivity: Tools:Utilities Other:</Category>
+  <WebUI>http://[IP]:[PORT:59824]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/nwithan8/unraid_templates/main/templates/sparky_fitness_garmin.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/sparky-fitness-icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1772729942</DateInstalled>
+  <DonateText>If you like an app, please donate to the respective developers; I'm just writing XML files over here. But if you have some change to spare afterwards, maybe chuck me a buck?</DonateText>
+  <DonateLink>https://www.buymeacoffee.com/nwithan8</DonateLink>
+  <Requires>br&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;Requires SparkyFitness containers.br&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;</Requires>
+  <Config Name="API Port" Target="8000" Default="8000" Mode="tcp" Description="" Type="Port" Display="always-hide" Required="true" Mask="false">59824</Config>
+  <Config Name="Garmin Microservice URL" Target="GARMIN_MICROSERVICE_URL" Default="http://IP_ADDRESS:8000" Mode="{3}" Description="URL of the Garmin microservice (e.g., http://IP_ADDRESS:8000)" Type="Variable" Display="always" Required="false" Mask="false">http://192.168.0.15:59824</Config>
+  <Config Name="Garmin Microservice Port" Target="GARMIN_SERVICE_PORT" Default="8000" Mode="{3}" Description="Port number for the Garmin microservice. Must match port defined in GARMIN_MICROSERVICE_URL" Type="Variable" Display="always" Required="false" Mask="false">59824</Config>
+  <Config Name="China Region" Target="GARMIN_SERVICE_IS_CN" Default="false|true" Mode="{3}" Description="Set to true if you are in China to use the China Garmin servers" Type="Variable" Display="always-hide" Required="true" Mask="false">false</Config>
+  <TailscaleStateDir/>
 </Container>

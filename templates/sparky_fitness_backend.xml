@@ -1,79 +1,55 @@
 <?xml version="1.0"?>
-<Container version="2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://raw.githubusercontent.com/nwithan8/unraid_templates/main/templates/template_schema.xsd template_schema.xsd">
-    <Name>SparkyFitness - Backend</Name>
-    <Repository>codewithcj/sparkyfitness_server:latest</Repository>
-    <Registry>https://hub.docker.com/r/codewithcj/sparkyfitness_server</Registry>
-    <Branch>
-        <Tag>latest</Tag>
-        <TagDescription>Latest stable release</TagDescription>
-    </Branch>
-    <Network>sparkyfitness</Network>
-    <Privileged>false</Privileged>
-    <Support>https://codewithcj.github.io/SparkyFitness</Support>
-    <Project>https://github.com/CodeWithCJ/SparkyFitness</Project>
-    <Overview>
-        SparkyFitness is a comprehensive fitness tracking and management application designed to help users monitor their nutrition, exercise, and body measurements. It provides tools for daily progress tracking, goal setting, and insightful reports to support a healthy lifestyle.  &#xD;
-        [br]
-        This is the backend container.
-    </Overview>
-    <Beta>False</Beta>
-    <Category>Productivity: Tools: Other: Status:Stable</Category>
-    <ExtraSearchTerms>health tracking data fitness nutrition exercise workout diet calories weight body measurements myfitnesspal pal</ExtraSearchTerms>
-    <Icon>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/sparky-fitness-icon.png</Icon>
-    <TemplateURL>https://raw.githubusercontent.com/nwithan8/unraid_templates/main/templates/sparky_fitness_backend.xml</TemplateURL>
-    <Screenshot>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/sparkyfitness_demo_1.png</Screenshot>
-    <Maintainer>
-        <WebPage>https://github.com/nwithan8</WebPage>
-    </Maintainer>
-    <Changes>
-        ### 2025-10-27
-
-        Add new database environment variables
-
-        ### 2025-10-07
-
-        Add uploads storage path
-
-        ### 2025-10-03
-
-        - Add email environment variables
-        - Add backup storage path
-
-        ### 2025-09-26
-
-        Add environmental variable for Garmin microservice connection
-
-        ### 2025-08-29
-
-        Initial release
-    </Changes>
-    <Requires>
-        Requires separate SparkyFitness - Frontend and Postgres containers.
-    </Requires>
-    <Config Name="API Port" Target="3010" Default="3010" Mode="tcp" Description="Container Port: 3010" Type="Port" Display="always-hide" Required="true" Mask="false">3010</Config>
-    <Config Name="Postgres - Host" Target="SPARKY_FITNESS_DB_HOST" Default="http://IP_ADDRESS" Description="Hostname or IP address of the Postgres server" Type="Variable" Display="always-hide" Required="true" Mask="false">http://IP_ADDRESS</Config>
-    <Config Name="Postgres - Port" Target="SPARKY_FITNESS_DB_PORT" Default="5432" Description="Port number for the Postgres server" Type="Variable" Display="always-hide" Required="true" Mask="false">5432</Config>
-    <Config Name="Postgres - Database Name" Target="SPARKY_FITNESS_DB_NAME" Default="sparkyfitness_db" Description="Name of the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="false">sparkyfitness_db</Config>
-    <Config Name="Postgres - Username" Target="SPARKY_FITNESS_DB_USER" Default="" Description="Username for the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="false"/>
-    <Config Name="Postgres - Password" Target="SPARKY_FITNESS_DB_PASSWORD" Default="" Description="Password for the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="true"/>
-    <Config Name="Postgres - Username" Target="SPARKY_FITNESS_APP_DB_USER" Default="" Description="Username for the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="false"/>
-    <Config Name="Postgres - Password" Target="SPARKY_FITNESS_APP_DB_PASSWORD" Default="" Description="Password for the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="true"/>
-    <Config Name="Garmin Microservice URL" Target="GARMIN_MICROSERVICE_URL" Default="http://IP_ADDRESS:8000" Description="URL of the Garmin microservice (e.g., http://IP_ADDRESS:8000)" Type="Variable" Display="always" Required="false" Mask="false">http://IP_ADDRESS:8000</Config>
-    <Config Name="Frontend URL" Target="SPARKY_FITNESS_FRONTEND_URL" Default="http://IP_ADDRESS:3004" Description="URL where the frontend is accessible (e.g., http://IP_ADDRESS:3004)" Type="Variable" Display="always-hide" Required="true" Mask="false">http://IP_ADDRESS:3004</Config>
-    <Config Name="Security - Encryption Key" Target="SPARKY_FITNESS_API_ENCRYPTION_KEY" Default="" Description="A 64-character hex string used to encrypt data. Generate with 'openssl rand -hex 32'" Type="Variable" Display="always-hide" Required="true" Mask="true"/>
-    <Config Name="Security - JWT Secret" Target="JWT_SECRET" Default="" Description="A secret key for signing JSON Web Tokens. Generate with 'openssl rand -base64 32'" Type="Variable" Display="always-hide" Required="true" Mask="true"/>
-    <Config Name="Disable User Signups" Target="SPARKY_FITNESS_DISABLE_SIGNUP" Default="false|true" Description="Set to true to disable new user registrations" Type="Variable" Display="always-hide" Required="true" Mask="false"/>
-    <Config Name="Force Email Logins" Target="SPARKY_FITNESS_FORCE_EMAIL_LOGIN" Default="false|true" Description="Force email/password login to be enabled, overriding any in-app settings. This is a fail-safe to prevent being locked out if OIDC is misconfigured." Type="Variable" Display="always-hide" Required="true" Mask="false"/>
-    <Config Name="Admin Email" Target="SPARKY_FITNESS_ADMIN_EMAIL" Default="" Description="Automatically grant admin rights to this email" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-    <Config Name="Email - SMTP Host" Target="SPARKY_FITNESS_EMAIL_HOST" Default="" Description="SMTP server hostname for sending emails" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-    <Config Name="Email - SMTP Port" Target="SPARKY_FITNESS_EMAIL_PORT" Default="587" Description="SMTP server port (default: 587)" Type="Variable" Display="always-hide" Required="false" Mask="false">587</Config>
-    <Config Name="Email - SMTP Secure" Target="SPARKY_FITNESS_EMAIL_SECURE" Default="false|true" Description="Set to true if the SMTP server requires a secure connection (TLS)" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-    <Config Name="Email - SMTP User" Target="SPARKY_FITNESS_EMAIL_USER" Default="" Description="SMTP server username for authentication" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-    <Config Name="Email - SMTP Password" Target="SPARKY_FITNESS_EMAIL_PASS" Default="" Description="SMTP server password for authentication" Type="Variable" Display="always-hide" Required="false" Mask="true"/>
-    <Config Name="Email - From Address" Target="SPARKY_FITNESS_EMAIL_FROM" Default="" Description="Email address that emails will be sent from" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
-    <Config Name="Backup Storage" Target="/app/SparkyFitnessServer/backup" Default="/mnt/user/appdata/sparkyfitness/backup" Description="Path to the backup storage folder" Type="Path" Display="always-hide" Required="true" Mask="false">/mnt/user/appdata/sparkyfitness/backup</Config>
-    <Config Name="Uploads Storage" Target="/app/SparkyFitnessServer/uploads" Default="/mnt/user/appdata/sparkyfitness/uploads" Description="Path to the uploads storage folder" Type="Path" Display="always-hide" Required="true" Mask="false">/mnt/user/appdata/sparkyfitness/uploads</Config>
-    <Config Name="Log Level" Target="SPARKY_FITNESS_LOG_LEVEL" Default="INFO|DEBUG|WARN|ERROR" Description="Logging level" Type="Variable" Display="advanced-hide" Required="true" Mask="false"/>
-    <Config Name="Node Environment" Target="NODE_ENV" Default="production|development" Description="Node environment setting" Type="Variable" Display="advanced-hide" Required="true" Mask="false"/>
-    <Config Name="Internal API Port" Target="SPARKY_FITNESS_SERVER_PORT" Default="3010" Description="Internal ort for API communication. Not recommended to change." Type="Variable" Display="advanced-hide" Required="true" Mask="false">3010</Config>
+<Container version="2">
+  <Name>SparkyFitness---Backend</Name>
+  <Repository>codewithcj/sparkyfitness_server:latest</Repository>
+  <Registry>https://hub.docker.com/r/codewithcj/sparkyfitness_server</Registry>
+  <Network>wildfire</Network>
+  <MyIP>172.18.255.126</MyIP>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://codewithcj.github.io/SparkyFitness</Support>
+  <Project>https://github.com/CodeWithCJ/SparkyFitness</Project>
+  <ReadMe/>
+  <Overview>SparkyFitness is a comprehensive fitness tracking and management application designed to help users monitor their nutrition, exercise, and body measurements. It provides tools for daily progress tracking, goal setting, and insightful reports to support a healthy lifestyle.  &#13;
+        &#13;
+&#13;
+        This is the backend container.</Overview>
+  <Category>Productivity: Tools:Utilities Other:</Category>
+  <WebUI/>
+  <TemplateURL>https://raw.githubusercontent.com/nwithan8/unraid_templates/main/templates/sparky_fitness_backend.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/nwithan8/unraid_templates/master/images/sparky-fitness-icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1772732022</DateInstalled>
+  <DonateText>If you like an app, please donate to the respective developers; I'm just writing XML files over here. But if you have some change to spare afterwards, maybe chuck me a buck?</DonateText>
+  <DonateLink>https://www.buymeacoffee.com/nwithan8</DonateLink>
+  <Requires>br&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;Requires separate SparkyFitness - Frontend and Postgres containers.br&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;&amp;amp;nbsp;</Requires>
+  <Config Name="API Port" Target="3010" Default="3010" Mode="tcp" Description="" Type="Port" Display="always-hide" Required="true" Mask="false">59826</Config>
+  <Config Name="Postgres - Host" Target="SPARKY_FITNESS_DB_HOST" Default="http://IP_ADDRESS" Mode="{3}" Description="Hostname or IP address of the Postgres server" Type="Variable" Display="always-hide" Required="true" Mask="false">http://192.168.0.15</Config>
+  <Config Name="Postgres - Port" Target="SPARKY_FITNESS_DB_PORT" Default="5432" Mode="{3}" Description="Port number for the Postgres server" Type="Variable" Display="always-hide" Required="true" Mask="false">59827</Config>
+  <Config Name="Postgres - Database Name" Target="SPARKY_FITNESS_DB_NAME" Default="sparkyfitness_db" Mode="{3}" Description="Name of the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="false">sparkyfitness_db</Config>
+  <Config Name="Postgres - Username" Target="SPARKY_FITNESS_DB_USER" Default="" Mode="{3}" Description="Username for the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="false">sparkyfitness</Config>
+  <Config Name="Postgres - Password" Target="SPARKY_FITNESS_DB_PASSWORD" Default="" Mode="" Description="Password for the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="false">sparkyfitness</Config>
+  <Config Name="Postgres - Username" Target="SPARKY_FITNESS_APP_DB_USER" Default="" Mode="{3}" Description="Username for the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="false">sparkyfitness</Config>
+  <Config Name="Postgres - Password" Target="SPARKY_FITNESS_APP_DB_PASSWORD" Default="" Mode="" Description="Password for the Postgres database" Type="Variable" Display="always-hide" Required="true" Mask="false">sparkyfitness</Config>
+  <Config Name="Garmin Microservice URL" Target="GARMIN_MICROSERVICE_URL" Default="http://IP_ADDRESS:8000" Mode="{3}" Description="URL of the Garmin microservice (e.g., http://IP_ADDRESS:8000)" Type="Variable" Display="always" Required="false" Mask="false">http://192.168.0.15:59824</Config>
+  <Config Name="Frontend URL" Target="SPARKY_FITNESS_FRONTEND_URL" Default="http://IP_ADDRESS:3004" Mode="{3}" Description="URL where the frontend is accessible (e.g., http://IP_ADDRESS:3004)" Type="Variable" Display="always-hide" Required="true" Mask="false">http://192.168.0.15:59825</Config>
+  <Config Name="Security - Encryption Key" Target="SPARKY_FITNESS_API_ENCRYPTION_KEY" Default="" Mode="{3}" Description="A 64-character hex string used to encrypt data. Generate with 'openssl rand -hex 32'" Type="Variable" Display="always-hide" Required="true" Mask="true">b364813dbb3e27a5631d8def503e3ff6e398e9bdbdbfcc1f6245c5de48839e98</Config>
+  <Config Name="BETTER_AUTH_SECRET" Target="BETTER_AUTH_SECRET" Default="" Mode="" Description="A secret key for signing JSON Web Tokens. Generate with 'openssl rand -base64 32'" Type="Variable" Display="always-hide" Required="true" Mask="true">a0PqXarncAEaQjCRD4gPdLOmDk970hek+MepnMYvz5c=</Config>
+  <Config Name="Disable User Signups" Target="SPARKY_FITNESS_DISABLE_SIGNUP" Default="false|true" Mode="{3}" Description="Set to true to disable new user registrations" Type="Variable" Display="always-hide" Required="true" Mask="false">false</Config>
+  <Config Name="Force Email Logins" Target="SPARKY_FITNESS_FORCE_EMAIL_LOGIN" Default="false|true" Mode="{3}" Description="Force email/password login to be enabled, overriding any in-app settings. This is a fail-safe to prevent being locked out if OIDC is misconfigured." Type="Variable" Display="always-hide" Required="true" Mask="false">false</Config>
+  <Config Name="Admin Email" Target="SPARKY_FITNESS_ADMIN_EMAIL" Default="" Mode="{3}" Description="Automatically grant admin rights to this email" Type="Variable" Display="always-hide" Required="false" Mask="false">admin@wildfirebill.vip</Config>
+  <Config Name="Email - SMTP Host" Target="SPARKY_FITNESS_EMAIL_HOST" Default="" Mode="{3}" Description="SMTP server hostname for sending emails" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
+  <Config Name="Email - SMTP Port" Target="SPARKY_FITNESS_EMAIL_PORT" Default="587" Mode="{3}" Description="SMTP server port (default: 587)" Type="Variable" Display="always-hide" Required="false" Mask="false">587</Config>
+  <Config Name="Email - SMTP Secure" Target="SPARKY_FITNESS_EMAIL_SECURE" Default="false|true" Mode="{3}" Description="Set to true if the SMTP server requires a secure connection (TLS)" Type="Variable" Display="always-hide" Required="false" Mask="false">false</Config>
+  <Config Name="Email - SMTP User" Target="SPARKY_FITNESS_EMAIL_USER" Default="" Mode="{3}" Description="SMTP server username for authentication" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
+  <Config Name="Email - SMTP Password" Target="SPARKY_FITNESS_EMAIL_PASS" Default="" Mode="{3}" Description="SMTP server password for authentication" Type="Variable" Display="always-hide" Required="false" Mask="true"/>
+  <Config Name="Email - From Address" Target="SPARKY_FITNESS_EMAIL_FROM" Default="" Mode="{3}" Description="Email address that emails will be sent from" Type="Variable" Display="always-hide" Required="false" Mask="false"/>
+  <Config Name="Backup Storage" Target="/app/SparkyFitnessServer/backup" Default="/mnt/user/appdata/sparkyfitness/backup" Mode="rw" Description="Path to the backup storage folder" Type="Path" Display="always-hide" Required="true" Mask="false">/mnt/cache/appdata/sparkyfitness/backup</Config>
+  <Config Name="Uploads Storage" Target="/app/SparkyFitnessServer/uploads" Default="/mnt/user/appdata/sparkyfitness/uploads" Mode="rw" Description="Path to the uploads storage folder" Type="Path" Display="always-hide" Required="true" Mask="false">/mnt/cache/appdata/sparkyfitness/uploads</Config>
+  <Config Name="Log Level" Target="SPARKY_FITNESS_LOG_LEVEL" Default="INFO|DEBUG|WARN|ERROR" Mode="{3}" Description="Logging level" Type="Variable" Display="advanced-hide" Required="true" Mask="false">INFO</Config>
+  <Config Name="Node Environment" Target="NODE_ENV" Default="production|development" Mode="{3}" Description="Node environment setting" Type="Variable" Display="advanced-hide" Required="true" Mask="false">production</Config>
+  <Config Name="Internal API Port" Target="SPARKY_FITNESS_SERVER_PORT" Default="3010" Mode="{3}" Description="Internal ort for API communication. Not recommended to change." Type="Variable" Display="advanced-hide" Required="true" Mask="false">59826</Config>
+  <TailscaleStateDir/>
 </Container>
